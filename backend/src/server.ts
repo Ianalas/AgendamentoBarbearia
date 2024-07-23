@@ -1,10 +1,11 @@
 import fastify from "fastify";
+import { UserController } from "./controller/UserController";
 
 const server = fastify({ logger: true });
 
-server.get("/", async (req, res) => {
-  return res.send("Hello World !!");
-});
+const userController = new UserController();
+
+server.post("/register", userController.createUser);
 
 server
   .listen({ port: 3000, host: "0.0.0.0" })
