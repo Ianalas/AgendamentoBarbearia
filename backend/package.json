@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx --watch ./src/server.ts",
-    "testando": "tsx --watch ./src/utils/validationCPF.ts"
+    "dev": "tsx --watch ./src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +21,6 @@
     "@fastify/jwt": "^8.0.1",
     "@prisma/client": "^5.17.0",
     "bcrypt": "^5.1.1",
-    "cpf-cnpj-validator": "^1.0.3",
     "fastify": "^4.28.1",
     "zod": "^3.23.8"
   },
