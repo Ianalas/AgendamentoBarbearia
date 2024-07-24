@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { db } from "../database/prisma";
+import {cpf} from "cpf-cnpj-validator";
 
 export class UserController {
   async createUser(req: FastifyRequest, reply: FastifyReply) {
@@ -19,7 +20,11 @@ export class UserController {
         where: {
           email: data.email,
         },
-      });
+      });      
+
+      if (cpf.isValid(data.cpf) === false) {
+        throw new Error("Este cpf não existe.");
+      }
 
       if (emailAlreadyExists) {
         throw new Error("Este email já está sendo usado.");
