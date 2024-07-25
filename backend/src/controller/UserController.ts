@@ -7,8 +7,8 @@ export class UserController {
     try {
       const createUserSchema = z.object({
         completyName: z.string(),
-        cpf: z.string(),
-        email: z.string().email(),
+        cpf: z.string().min(1, "CPF é obrigátorio !"),
+        email: z.string().email("E-mail inválido"),
         password: z.string().min(6),
         phoneNumber: z.string(),
       });
@@ -31,6 +31,14 @@ export class UserController {
 
       return reply.send(user);
     } catch (err: any) {
+      if (err instanceof z.ZodError) {
+        err.errors.map((err) => {
+          return reply.status(400).send({
+            error: err.message,
+          });
+        });
+      }
+
       return reply.status(400).send({
         error: err.message,
       });
