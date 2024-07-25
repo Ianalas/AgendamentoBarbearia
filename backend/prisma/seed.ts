@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { cpf } from "cpf-cnpj-validator";
 
 const db = new PrismaClient();
 
@@ -19,24 +20,24 @@ async function seed() {
     },
   ];
 
-  const service = await db.service.createMany({
-    data: services,
-  });
-
-  // const user = await db.user.create({
-  //   data: {
-  //     completyName: "Rodrygo Gomes",
-  //     cpf: "542.091.123-41",
-  //     email: "jorge@gmail.com",
-  //     password: "123123",
-  //     phoneNumber: "1199999999",
-  //   },
+  // const service = await db.service.createMany({
+  //   data: services,
   // });
+
+  const user = await db.user.create({
+    data: {
+      completyName: "Rodrygo Gomes",
+      cpf: cpf.generate(),
+      email: "rrrrr@gmail.com",
+      password: "333",
+      phoneNumber: "11988888888",
+    },
+  });
 
   await db.schedule.create({
     data: {
       serviceId: "d280d524-d936-402f-98b7-0ab25dc84df0",
-      userId: "ed57a61c-3cb5-486f-9df7-7081d07fe5a1",
+      userId: user.id,
     },
   });
 }

@@ -2,31 +2,24 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { db } from "../database/prisma";
 
+import { UserValidate } from "../validation/UserValidate";
+
+import { hash } from "bcrypt";
+
 export class UserController {
   async createUser(req: FastifyRequest, reply: FastifyReply) {
     try {
-      const createUserSchema = z.object({
-        completyName: z.string(),
-        cpf: z.string().min(1, "CPF é obrigátorio !"),
-        email: z.string().email("E-mail inválido"),
-        password: z.string().min(6),
-        phoneNumber: z.string(),
-      });
+      const userValidate = new UserValidate();
 
-      const data = createUserSchema.parse(req.body);
+      const data = await userValidate.validateSchema(req);
 
-      const emailAlreadyExists = await db.user.findUnique({
-        where: {
-          email: data.email,
-        },
-      });
-
-      if (emailAlreadyExists) {
-        throw new Error("Este email já está sendo usado.");
-      }
+      const hashedPassword = await hash(data.password, 8);
 
       const user = await db.user.create({
-        data,
+        data: {
+          ...data,
+          password: hashedPassword,
+        },
       });
 
       return reply.send(user);
