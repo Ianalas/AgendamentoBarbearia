@@ -1,26 +1,21 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
-import { db } from "../database/prisma";
-
+import { UserService } from "../service/UserService";
 import { UserValidate } from "../validation/UserValidate";
 
-import { hash } from "bcrypt";
-
 export class UserController {
+  private userService: UserService;
+  private userValidate: UserValidate;
+
+  constructor(service: UserService, userValidate: UserValidate) {
+    this.userService = service;
+    this.userValidate = userValidate;
+  }
+
   async createUser(req: FastifyRequest, reply: FastifyReply) {
     try {
-      const userValidate = new UserValidate();
-
-      const data = await userValidate.validateSchema(req);
-
-      const hashedPassword = await hash(data.password, 8);
-
-      const user = await db.user.create({
-        data: {
-          ...data,
-          password: hashedPassword,
-        },
-      });
+      const validatedData = await this.userValidate.validateSchema(req);
+      const user = await this.userService.createUser(validatedData);
 
       return reply.send(user);
     } catch (err: any) {
