@@ -1,0 +1,100 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #05395E;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.tela-login {
+  border-radius: 8px;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  color: #ffffff; 
+  margin-bottom: 20px;
+}
+
+img {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 340px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  font-weight: 500; 
+  margin-bottom: 5px;
+  color: #ffffff; 
+}
+
+input {
+  background-color: transparent;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1), 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 2px 2px rgba(0, 0, 0, 0.1), 0px 0px 0px 1px rgba(0, 0, 0, 0.1), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.03), inset 0px 1px 0px rgba(255, 255, 255, 0.03);
+  border: 2px solid #5184C0;
+  border-radius: 0.6rem;
+  padding: 12px;
+  font-size: 18px;
+  width: 100%;
+}
+
+.button-ems,
+.button-reg,
+.button-register {
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%; 
+  margin-top: 10px; 
+}
+
+.button-ems:hover,
+.button-reg:hover,
+.button-register:hover {
+  background-color: #0056b3; 
+}
+
+.button-register {
+  background-color: transparent; 
+  color: #007bff; 
+  border: 2px solid #007bff; 
+}
+
+.button-register:hover {
+  background-color: #007bff; 
+  color: white; 
+}
+
+.button-register-link {
+  text-decoration: none; 
+  color: inherit; 
+}
+
+.button-register-link:hover {
+  text-decoration: underline; 
+}
