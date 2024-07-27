@@ -1,5 +1,6 @@
-import { UserData, UserRepository } from "../repository/UserRepository";
+import { UserRepository } from "../repository/UserRepository";
 import { hash } from "bcrypt";
+import { IUserData } from "../schemas/user-schema";
 
 export class UserService {
   private userRepository: UserRepository;
@@ -8,7 +9,7 @@ export class UserService {
     this.userRepository = repository;
   }
 
-  async createUser(data: UserData) {
+  async createUser(data: IUserData) {
     const passwordHashed = await hash(data.password, 8);
 
     const createUserData = {

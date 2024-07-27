@@ -1,18 +1,10 @@
 import { cpf } from "cpf-cnpj-validator";
 import { FastifyRequest } from "fastify";
-import { z } from "zod";
 import { db } from "../database/prisma";
+import { createUserSchema } from "../schemas/user-schema";
 
 export class UserValidate {
   async validateSchema(req: FastifyRequest) {
-    const createUserSchema = z.object({
-      completyName: z.string(),
-      cpf: z.string().min(1, "CPF é obrigátorio !"),
-      email: z.string().email("E-mail inválido"),
-      password: z.string().min(6),
-      phoneNumber: z.string(),
-    });
-
     const data = createUserSchema.parse(req.body);
 
     if (!cpf.isValid(data.cpf)) throw new Error("CPF inválido.");
