@@ -43,8 +43,8 @@ img {
 }
 
 label {
-  font-weight: 500; 
-  margin-bottom: 5px;
+  font-weight: 300; 
+  font-size: 1.2rem;
   color: #ffffff; 
 }
 
@@ -58,36 +58,43 @@ input {
   width: 100%;
 }
 
-.button-ems,
-.button-reg,
-.button-register {
-  background-color: #007bff; 
-  color: white;
+.button-ems {
+  background-color: transparent;
   border: none;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 100%; 
-  margin-top: 10px; 
+  color: #ffffff;
+  text-decoration: underline;
 }
 
-.button-ems:hover,
-.button-reg:hover,
-.button-register:hover {
-  background-color: #0056b3; 
+.button-ent {
+  background-color: #195986; 
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1), 0px 4px 4px rgba(0, 0, 0, 0.1), 0px 2px 2px rgba(0, 0, 0, 0.1), 0px 0px 0px 1px rgba(0, 0, 0, 0.1), inset 0px 0px 0px 1px rgba(255, 255, 255, 0.03), inset 0px 1px 0px rgba(255, 255, 255, 0.03); ;
+  color: #ffffff;
+  border: 2px solid #5184C0;
+  border-radius: 0.6rem;
+  padding: 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  width: 90%; 
+  margin-top: 10px;
+}
+
+.button-ent:hover {
+  background-color: #5184C0; 
 }
 
 .button-register {
-  background-color: transparent; 
-  color: #007bff; 
-  border: 2px solid #007bff; 
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .button-register:hover {
-  background-color: #007bff; 
-  color: white; 
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .button-register-link {
