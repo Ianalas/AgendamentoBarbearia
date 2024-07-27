@@ -1,12 +1,16 @@
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #05395E;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  height: auto;
+}
+
+body {
+  background-color: #05395E;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-content: center;
 }
 
 .tela-login {
@@ -24,8 +28,9 @@ h1 {
 }
 
 img {
-  width: 80px;
-  margin-bottom: 20px;
+  max-width: 80px;
+  margin-top: 1px;
+  height: auto;
 }
 
 .input-group {
@@ -63,6 +68,7 @@ input {
   border: none;
   color: #ffffff;
   text-decoration: underline;
+  float: right;
 }
 
 .button-ent {
