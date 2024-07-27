@@ -43,8 +43,7 @@ p {
   color: #ffffff; 
 }
 
-  .button-primary,
-.button-secondary {
+.button-primary {
   display: block;
   background-color: #195986;
   color: #ffffff;
