@@ -19,4 +19,12 @@ export class UserRepository {
       },
     });
   }
+
+  async findUserByCPF(cpf: string): Promise<User | null> {
+    return db.user.findUnique({
+      where: {
+        cpf,
+      },
+    });
+  }
 }
