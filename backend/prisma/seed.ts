@@ -4,6 +4,10 @@ import { cpf } from "cpf-cnpj-validator";
 const db = new PrismaClient();
 
 async function seed() {
+  await db.service.deleteMany();
+  await db.user.deleteMany();
+  await db.schedule.deleteMany();
+
   const services = [
     {
       name: "Corte Cabelo",
@@ -43,7 +47,7 @@ async function seed() {
 }
 
 seed().then(() => {
-  console.log("SEEDED");
+  console.log("Seed ran successfully 🍃🍃");
   db.$disconnect();
 });
 
