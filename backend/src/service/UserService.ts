@@ -3,13 +3,9 @@ import { hash } from "bcrypt";
 import { IUserData } from "../schemas/user-schema";
 
 export class UserService {
-  private userRepository: UserRepository;
+  constructor(private readonly userRepository: UserRepository) {}
 
-  constructor(repository: UserRepository) {
-    this.userRepository = repository;
-  }
-
-  async createUser(data: IUserData) {
+  async createUser(data: IUserData): Promise<{ id: string }> {
     const passwordHashed = await hash(data.password, 8);
 
     const createUserData = {
@@ -17,6 +13,6 @@ export class UserService {
       password: passwordHashed,
     };
 
-    return await this.userRepository.create(createUserData);
+    return this.userRepository.create(createUserData);
   }
 }
