@@ -37,7 +37,7 @@ model Service {
 
 model Schedule {
   id       String   @id @default(uuid())
-  datetime DateTime @default(now())
+  datetime DateTime
 
   service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
   serviceId String

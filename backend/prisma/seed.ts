@@ -8,25 +8,29 @@ async function seed() {
   await db.user.deleteMany();
   await db.schedule.deleteMany();
 
-  const services = [
-    {
+  // const services = [
+  //   {
+  //     name: "Corte Cabelo",
+  //     description: "Degradê",
+  //     price: 30,
+  //   },
+  //   {
+  //     name: "Barba",
+  //     price: 25,
+  //   },
+  //   {
+  //     name: "Luzes",
+  //     price: 50,
+  //   },
+  // ];
+
+  const service = await db.service.create({
+    data: {
       name: "Corte Cabelo",
       description: "Degradê",
       price: 30,
     },
-    {
-      name: "Barba",
-      price: 25,
-    },
-    {
-      name: "Luzes",
-      price: 50,
-    },
-  ];
-
-  // const service = await db.service.createMany({
-  //   data: services,
-  // });
+  });
 
   const user = await db.user.create({
     data: {
@@ -40,7 +44,8 @@ async function seed() {
 
   await db.schedule.create({
     data: {
-      serviceId: "d280d524-d936-402f-98b7-0ab25dc84df0",
+      datetime: new Date(2024, 7, 27),
+      serviceId: service.id,
       userId: user.id,
     },
   });
