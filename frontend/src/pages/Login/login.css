@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html, body {
   font-family: 'Montserrat', sans-serif;
   height: auto;
 }
@@ -9,8 +12,8 @@
 body {
   background-color: #05395E;
   display: flex;
-  justify-content: center;
-  align-content: center;
+  justify-content: center; 
+  align-items: center; 
 }
 
 .tela-login {
@@ -24,12 +27,14 @@ body {
 h1 {
   font-size: 24px;
   color: #ffffff; 
-  margin-bottom: 20px;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 img {
   max-width: 80px;
-  margin-top: 1px;
+  margin-top: 3px;
+  margin-bottom: 2px;
   height: auto;
 }
 
@@ -37,8 +42,9 @@ img {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 2rem;
-  width: 340px;
+  margin-top: 3rem;
+  margin-bottom: 0.5rem;
+  width: 295px;
 }
 
 .input-box {
@@ -82,7 +88,8 @@ input {
   cursor: pointer;
   transition: .3s ease-in-out;
   width: 90%; 
-  margin-top: 10px;
+  margin-top: 4rem;
+  margin-bottom: 0.5rem;
 }
 
 .button-ent:hover {
