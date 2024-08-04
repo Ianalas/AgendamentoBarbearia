@@ -18,4 +18,9 @@ export async function scheduleRoutes(server: FastifyInstance) {
     "/schedule",
     scheduleController.createSchedule.bind(scheduleController)
   );
+
+  server.get(
+    "/schedule/:id",
+    scheduleController.getScheduleById.bind(scheduleController)
+  );
 }
